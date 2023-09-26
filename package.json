@@ -1,0 +1,17 @@
+{
+  "name": "primera-entrega",
+  "version": "1.0.0",
+  "description": "Primera Entrega Coder House",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "server": "node src/ProductManager.js"
+  },
+  "keywords": [],
+  "author": "Evelyn Alvarenga",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
