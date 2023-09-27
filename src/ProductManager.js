@@ -14,7 +14,7 @@ class ProductManager {
             } else {
                 id = products[products.length - 1].id + 1
             }
-            const newProduct = { id, ...product };
+            const newProduct = { id, status:true, ...product };
             products.push(newProduct);
             await promises.writeFile(this.path, JSON.stringify(products))
             return newProduct
