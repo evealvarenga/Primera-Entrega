@@ -8,6 +8,9 @@ const manager = new ProductManager('./src/productos.json');
 router.get('/', async (req, res) => {
     try {
         const products = await manager.getProducts(req.query);
+        if (!products.length){
+            res.status(200).json({ message: "No hay productos guardados." });
+        }
         res.status(200).json({ message: "Producto encontrado", products });
     } catch (error) {
         res.status(500).json({ error: 'Hubo un error al obtener los productos.' });
@@ -21,7 +24,7 @@ router.get('/:pid', async (req, res) => {
     try {
         const product = await manager.getProductsByID(+pid);
         if (!product) {
-            return res.status(404).json({ error: product });
+            return res.status(404).json({message: "Producto no encontrado."});
         } 
         return res.status(200).json({message: "Producto encontrado.", product});
     } catch (error) {
@@ -37,7 +40,7 @@ router.post('/', async (req, res) => {
     }
     try {
         const response = await manager.addProduct(req.body);
-        res.status(200).json({message:"Producto creado"})
+        res.status(200).json({message:"Producto creado", product: response})
     } catch (error) {
         res.status(500).json({message: error.message})
     }
