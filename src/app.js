@@ -3,9 +3,9 @@ import productRouter from './routes/products.router.js'
 import cartRouter from './routes/cart.routes.js'
 
 const app = express();
-
-//Use
 app.use(express.json());
+
+//Routes
 app.use("api/products", productRouter); 
 app.use("api/cart", cartRouter);
 
